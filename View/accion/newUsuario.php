@@ -14,7 +14,7 @@
 
 
 $retorno['respuesta'] = $resp;
-$retorno['errorMsg']="Error: Nombre de usuario ya existe existente";
+$retorno['errorMsg']="Error: Nombre de usuario ya existe ";
         // $json_string = json_encode($datos);
         //  $file = 'submit.json';
         // file_put_contents($file, $json_string);

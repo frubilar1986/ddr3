@@ -13,6 +13,13 @@ if (isset($data['id'])) {
   $dirImg = md5($data["id"]);
   $arrImagenes = scandir($ROOT . "view/img/Productos/" . $dirImg);
 }
+$nameMenuBd = 'Nuevo Producto';
+$accesoPag = new CtrolPagina;
+if (isset($data['idmenu'])) {
+  $_SESSION['idmenu'] = $data['idmenu'];
+} 
+
+$access = $accesoPag->ctrl_acceso($_SESSION, $nameMenuBd);
 
 ?>
 
@@ -103,7 +110,7 @@ if (isset($data['id'])) {
 
             <?php if (count($arrImagenes) > 2) { ?>
               <br>
-              <a type="button" href="../Controller/borrarImagenes.php?id=<?=$producto->getIdProducto()?>" class="btn btn-labeled btn-danger mt-3" onclick="requerirImagen()" rel="nofollow" target="_blank">
+              <a type="button" href="../Controller/borrarImagenes.php?id=<?= $producto->getIdProducto() ?>" class="btn btn-labeled btn-danger mt-3" onclick="requerirImagen()" rel="nofollow" target="_blank">
                 <span class="btn-label"><i class="fa fa-trash"></i>&nbsp;&nbsp;&nbsp;Borrar imagenes</span>
               </a>
             <?php } ?>

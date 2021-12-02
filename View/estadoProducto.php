@@ -6,22 +6,24 @@ include_once 'includes/navbar.php';
 
 $control = new ListarProductosControl();
 $productos = $control->listar();
-//$accesoPag = new ctrolPagina;
-//$access = $accesoPag->ctrl_acceso();
+$nameMenuBd = "Estado Producto";
 $data = data_submitted();
-    $accesoPag = new ctrolPagina;
+//mostrarArray($_SESSION);
+//mostrarArray($data);
+    $accesoPag = new CtrolPagina;
     if(isset($data['idmenu'])){
         $_SESSION['idmenu'] = $data['idmenu'];
     }
-    $access = $accesoPag->ctrl_acceso($_SESSION);
+    $access = $accesoPag->ctrl_acceso($_SESSION,$nameMenuBd);
+    //mostrarArray($_SESSION);
 ?>
 
-?>
+
 
 
 <div class="container d-flex justify-content-center align-items-start text-center mt-5">
 
-  <?php /*if ($sesion->activa() && $sesion->getRolActual() == 2)*/ if ($access) { ?>
+  <?php  if ($access) { ?>
 
     <?php if (count($productos) > 0) { ?>
       <table class="table caption-top">
@@ -76,9 +78,9 @@ $data = data_submitted();
 
               <td>
                 <?php if (!$producto->getProDeshabilitado()) { ?>
-                  <a class="btn btn-danger mt-3" title="Dar de baja" href="../Controller/estadoProductoMod.php?id=<?= $producto->getIdProducto() ?>&v=1" role="button"><i class="fas fa-trash-alt"></i></a>
+                  <a class="btn btn-danger mt-3" title="Dar de baja" href="../Controller/estadoProductoMod.php?id=<?= $producto->getIdProducto() ?>&v=1&idmenu="<?=$_SESSION['idmenu'] ?> role="button"><i class="fas fa-trash-alt"></i></a>
                 <?php } else { ?>
-                  <a class="btn btn-warning mt-3" title="Reactivar" href="../Controller/estadoProductoMod.php?id=<?= $producto->getIdProducto() ?>&v=1" role="button"><i class="fas fa-redo"></i></a>
+                  <a class="btn btn-warning mt-3" title="Reactivar" href="../Controller/estadoProductoMod.php?id=<?= $producto->getIdProducto() ?>&v=1&idmenu="<?=$_SESSION['idmenu'] ?> role="button"><i class="fas fa-redo"></i></a>
                 <?php } ?>
               </td>
 

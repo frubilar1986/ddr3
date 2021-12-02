@@ -3,17 +3,24 @@
 <?php $title = 'Stock Productos';
 include_once 'includes/head.php';
 include_once 'includes/navbar.php';
-
+$data = data_submitted();
 $control = new ListarProductosControl();
 $productos = $control->listar();
-$accesoPag = new ctrolPagina;
-$access = $accesoPag->ctrl_acceso();
+$accesoPag = new CtrolPagina;
+mostrarArray($_SESSION);
+mostrarArray($data);
+$name = 'Stock';
+if(isset($data['idmenu'])){
+  $_SESSION['idmenu'] = $data['idmenu'];
+}
+$access = $accesoPag->ctrl_acceso($_SESSION,$name);
+ mostrarArray($_SESSION);
 ?>
 
 
 <div class="container d-flex justify-content-center align-items-start text-center mt-5">
 
-  <?php //if ($sesion->activa() && $sesion->getRolActual() == 2) { ?>
+ 
     <?php if ($access) { ?>
 
 

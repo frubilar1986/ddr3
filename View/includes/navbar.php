@@ -9,7 +9,7 @@ if ($sesion->activa()) {
   $rolActual = $control->rolActual($sesion);
   $menuRol = $control->menuRol($sesion);
   $menues = $control->menues($sesion);
-  $subMenues = $control->subMenues($menues);
+  //$subMenues = $control->subMenues($menues);
 }
 
 ?>

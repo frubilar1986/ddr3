@@ -5,8 +5,14 @@ include_once './includes/head.php';
 include_once "./includes/navbar.php";
 /* if ($sesion->activa() && $_SESSION['rol'] == 1 ) {
  */
-$accesoPag = new ctrolPagina;
-$access = $accesoPag->ctrl_acceso();
+//mostrarArray($_SESSION);
+$nameMenuBd = 'Usuarios';
+$data = data_submitted();
+    $accesoPag = new CtrolPagina;
+    if(isset($data['idmenu'])){
+        $_SESSION['idmenu'] = $data['idmenu'];
+    }
+    $access = $accesoPag->ctrl_acceso($_SESSION,$nameMenuBd);
 ?>
 <?php if ($access) { ?>
 

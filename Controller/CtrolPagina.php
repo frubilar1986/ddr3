@@ -1,18 +1,20 @@
 <?php
 //include_once('../config.php');
 
-class ctrolPagina
+class CtrolPagina
 {
 
-    function ctrl_acceso($param)
+    function ctrl_acceso($param,$nomPag)
     {
-
+        $ctrolMenu = new AbmMenu;
+        $objMenu = $ctrolMenu->buscar(['menombre'=>$nomPag]);
+        $idMenu = $objMenu[0]->getIdMenu();
         $resp = false;
        
 
         if (isset($param['idmenu'])) {
             $abmMenuRol = new AbmMenuRol;
-            $col = $abmMenuRol->buscar(['idmenu' => $param['idmenu'], 'idrol' => $param['rol']]);
+            $col = $abmMenuRol->buscar(['idmenu' => $idMenu, 'idrol' => $param['rol']]);
 
             if (count($col) != 0) {
                 $resp = true;

@@ -1,16 +1,16 @@
-<?php $title = 'Abm menues';
+<?php $title = 'Abm Menues';//debe llamarse igual que en la base de datos para CtrolPagina.php
 include_once('../config.php');
 $sesion = new Session();
 include_once './includes/headjui.php';
 include_once "./includes/navbar.php";
 //if ($sesion->activa() && $sesion->getRolActual() == 1) {
-   
+   $nameMenuBd = "Abm Menues";
     $data = data_submitted();
-    $accesoPag = new ctrolPagina;
+    $accesoPag = new CtrolPagina;
     if(isset($data['idmenu'])){
         $_SESSION['idmenu'] = $data['idmenu'];
     }
-    $access = $accesoPag->ctrl_acceso($_SESSION);
+    $access = $accesoPag->ctrl_acceso($_SESSION,$nameMenuBd);
 ?>
 
 

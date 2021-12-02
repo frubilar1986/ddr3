@@ -3,16 +3,23 @@
 <?php $title = 'Modificar Productos';
 include_once 'includes/head.php';
 include_once 'includes/navbar.php';
-
+$nameMenuBd = "Modificar Productos";
 $control = new ListarProductosControl();
+
 $productos = $control->listar();
+$data = data_submitted();
+if(isset($data['idmenu'])){
+  $_SESSION['idmenu'] = $data['idmenu'];
+}
+$access = $accesoPag->ctrl_acceso($_SESSION,$nameMenuBd);
+ mostrarArray($_SESSION);
 
 ?>
 
 
 <div class="container d-flex justify-content-center align-items-start text-center mt-5">
 
-  <?php if ($sesion->activa() && $sesion->getRolActual() == 2) { ?>
+  <?php if ($access) { ?>
 
     <?php if (count($productos) > 0) { ?>
 

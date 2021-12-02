@@ -7,12 +7,13 @@ include_once "./includes/navbar.php";
 /* if ($sesion->activa() && $sesion->getRolActual() == 1) { */
 //$accesoPag = new ctrolPagina;
 //$access = $accesoPag->ctrl_acceso();
+$nameMenuBd = "Roles de usuarios";
 $data = data_submitted();
     $accesoPag = new ctrolPagina;
     if(isset($data['idmenu'])){
         $_SESSION['idmenu'] = $data['idmenu'];
     }
-    $access = $accesoPag->ctrl_acceso($_SESSION);
+    $access = $accesoPag->ctrl_acceso($_SESSION,$nameMenuBd);
 ?>
 
 <?php if ($access) { ?>

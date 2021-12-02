@@ -1,15 +1,15 @@
-<?php $title = 'Administrar usuarios';
+<?php $title = 'Asignar menu a usuario';
 include_once('../config.php');
 $sesion = new Session();
 include_once './includes/head.php';
 include_once "./includes/navbar.php";
-// if ($sesion->activa() && $sesion->getRolActual() == 1) {
+$nameMenuBd = "Asignar menus";
     $data = data_submitted();
-    $accesoPag = new ctrolPagina;
+    $accesoPag = new CtrolPagina;
     if(isset($data['idmenu'])){
         $_SESSION['idmenu'] = $data['idmenu'];
     }
-    $access = $accesoPag->ctrl_acceso($_SESSION);
+    $access = $accesoPag->ctrl_acceso($_SESSION,$nameMenuBd);
 ?>
 
 
